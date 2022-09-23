@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rock Paper Scisors</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="main.js" defer></script>
+</head>
+<body>
+  
+<div class="body">
+  <header>
+    <img src="images/logo.svg" alt="">
+    <div class="score">
+      <p>SCORE</p>
+      <div id="score">0</div>
+    </div>
+  </header>
+  <div class="game">
+    <div class="gameContainer">
+      <div class="triangle">
+        <img src="images/bg-triangle.svg" alt="">
+      </div>
+
+      <button class="buttons paper" id="paper" onclick="choose(this.id)">
+        <img src="images/icon-paper.svg" alt="" >
+      </button>
+
+      <button class="buttons scissors" id="scissors" onclick="choose(this.id)">
+        <img src="images/icon-scissors.svg" alt="" >
+      </button>
+
+      <button class="buttons rock" id="rock" onclick="choose(this.id)">
+        <img src="images/icon-rock.svg" alt="" >
+      </button>
+
+    </div>
+  </div>
+
+
+
+  <div class="result">
+    <div class="youPicked">
+      <h2>You Picked</h2>
+    </div>
+    <div class="resultShow">
+      <h2 id="resultStat"></h2>
+      <button class="playAgainBtn" onclick="reset()">PLAY AGAIN</button>
+    </div>
+    <div class="theHousePicked">
+      <h2>The House Picked</h2>
+      <div class="button"></div>
+
+    </div>
+  </div>
+</div>
+
+<button id="rulesBtn" onclick="openRules()">RULES</button>
+
+<div id="rulesContainer">
+  <div class="blank"></div>
+  <div id="rules">
+    <nav>
+      <h2>RULES</h2>
+      <button onclick="closeRules()"><img src="images/icon-close.svg"></button>
+    </nav>
+    <img src="images/image-rules.svg" alt="">
+  </div>
+</div>
+</body>
+</html>

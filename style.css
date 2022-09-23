@@ -1,0 +1,484 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@400;500;600&display=swap');
+*{
+    padding: 0;
+    margin: 0;
+    font-family: 'Barlow Semi Condensed', sans-serif;
+}
+
+
+
+
+
+a,button{
+    all: unset;
+    cursor: pointer;
+    color: var(--dark-color);
+}
+h2,h3,p{
+    color: var(--dark-color);
+}
+
+:root{
+
+    --main-color: #72a1cb;
+    --light-color: #dcdcdc;
+    --Dark-Text: hsl(229, 25%, 31%);
+    --Score-Text: hsl(229, 64%, 46%);
+    --Header-Outline: hsl(217, 16%, 45%);
+    --dark-color:#181818;
+
+    --Scissors-color:  hsl(40, 84%, 53%);
+    --Paper-color:  hsl(230, 89%, 65%);
+    --Rock-color:  hsl(349, 70%, 56%);
+}
+
+
+.body{
+    background: var(--main-color);
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+header{
+    width: 50%;
+    height: 11rem;
+    outline: 3px solid var(--Header-Outline);
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem;
+    box-sizing: border-box;
+    margin-top: 5rem;
+}
+.score{
+    background: var(--light-color);
+    height: 100%;
+    padding: 0px 3rem;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    padding-bottom: 1rem;
+    box-sizing: border-box;
+}
+.score p{
+    color: var(--Score-Text);
+    font-size: 1.4rem;
+    font-weight: 500;
+}
+#score{
+    color: var(--Dark-Text);
+    font-size: 5rem;
+    font-weight: 600;
+    line-height: 3.5rem;
+}
+.game{
+    flex-basis: 100%;
+    display: flex;
+    align-items: center;
+}
+.gameContainer{
+    position: relative;
+
+}
+.buttons{
+    position: absolute;
+    width: 10rem;
+    height: 10rem;
+    text-align: center;
+    background: var(--light-color);
+    border-radius: 50%;
+    transition: 0.3s;
+}
+.buttons:hover{
+    background: white;
+}
+.paper{
+    border: 1.5rem solid var(--Paper-color);
+    transform: translate(-50% , -50%);
+    top: 0;
+    left: 0;
+}
+.scissors{
+    border: 1.5rem solid var(--Scissors-color);
+    transform: translate(50% , -50%);
+    top: 0;
+    right: 0;
+}
+.rock{
+    border: 1.5rem solid var(--Rock-color);
+    transform: translate(-50% , 50%);
+    bottom: 0;
+    left: 50%;
+}
+
+
+.result{
+    display: none;
+    width: 50%;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-basis: 100%;
+    margin-bottom: 7rem;
+}
+.result div:not(.youPicked, .theHousePicked , .resultShow){
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+.result h2{
+    font-size: 2.5rem;
+}
+.result .buttons, .result .button{
+    position: absolute;
+    width: 15rem;
+    height: 15rem;
+    border-radius: 50%;
+    transform: translate(-50% , -50%);
+    justify-content: center;
+    align-items: center;
+    left: 50%;
+    top: 50%;
+    z-index: 1;
+}
+.result .button{
+    background: var(--Header-Outline);
+    border: 1.5rem solid var(--Header-Outline);
+
+}
+.youPicked, .theHousePicked{
+    position: relative;
+    height: 75%;
+    width: 300px;
+}
+.youPicked h2, .theHousePicked h2{
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50% , -50%);
+    white-space: nowrap;
+    z-index: 10;
+}
+.winner::before{
+    content: '';
+    position: absolute;
+    width: 25rem;
+    height: 25rem;
+    border-radius: 100vmax;
+    background: #ffffff55;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+.winner::after{
+    content: '';
+    position: absolute;
+    width: 35rem;
+    height: 35rem;
+    border-radius: 100vmax;
+    background: #ffffff55;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+.before div{
+    position: absolute;
+    transform: translate(-50%,-50%);
+    left: 50%;
+    top: 50%;
+    background: #ffffff11;
+    /* width: 100rem;
+    height: 100rem; */
+    border-radius: 100vmax;
+}
+.before div:nth-child(1){
+    width: 25rem;
+    height: 25rem;
+    
+}
+.before div:nth-child(2){
+    width: 35rem;
+    height: 35rem;
+}
+.before div:nth-child(3){
+    width: 45rem;
+    height: 45rem;
+    border-radius: 100vmax;
+}
+
+
+
+
+.resultShow{
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* display: none; */
+    visibility: hidden;
+}
+.resultShow h2{
+    font-weight: 600;
+    font-size: 3rem;
+
+}
+.resultShow button{
+    background: var(--light-color);
+    border: var(--light-color) 3px solid;
+    border-radius: 1rem;
+    padding: 1rem 2.5rem;
+    font-size: 1rem;
+}
+
+
+#rulesBtn{
+    position: absolute;
+    bottom: 2rem;
+    right: 2rem;
+    padding: 0.75rem 3rem;
+    color: var(--light-color);
+    font-size: 1.75rem;
+    border: var(--light-color) 2px solid;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    transition: 0.3s;
+}
+#rulesBtn:hover{
+    background: var(--light-color);
+    color: var(--main-color);
+}
+#rules{
+    width: 25rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2.5rem;
+    background: var(--light-color);
+    border-radius: 1rem;
+    border: var(--Header-Outline) 2px solid;
+    position: absolute;
+    transform: translate(-50%,-50%) ;
+    top: 50%;
+    left: 50%;
+    z-index: 100;
+    position: absolute;
+}
+#rulesContainer{
+    display: none;
+}
+.blank{
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background: #18181818;
+    backdrop-filter: blur(5px);
+    content: '';
+    z-index: 10;
+    top: 0;
+
+}
+#rules nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1rem 2rem;
+    width: 100%;
+    box-sizing: border-box;
+    color: var(--dark-color);
+
+}
+
+
+
+@media screen and (max-width: 1440px) {
+    header, .result{
+        width: 70%;
+    }
+}
+@media screen and (max-width : 1100px) {
+    .result .buttons, .result .button{
+        width: 12rem;
+        height: 12rem;
+    }
+    .before div:nth-child(1){
+        width: 22rem;
+        height: 22rem;
+        
+    }
+    .before div:nth-child(2){
+        width: 30rem;
+        height: 30rem;
+    }
+    .before div:nth-child(3){
+        width: 40rem;
+        height: 40rem;
+    }
+    #resultStat{
+        white-space: nowrap;
+        font-size: 2.5rem;
+    }
+    .resultShow button{
+        padding: 0.75rem 1.75rem;
+        border-radius: 0.75rem;
+    }
+}
+@media screen and (max-width: 950px) {
+    header, .result{
+        width: 90%;
+    }
+
+    .buttons{
+        width: 8rem;
+        height: 8rem;
+        border-width: 1.25rem;
+    }
+    .gameContainer{
+        width: 35vw;
+        height: 35vw;
+    }
+    .triangle img{
+        width: 100%;
+    }
+    .result .buttons, .result .button{
+        width: 10rem;
+        height: 10rem;
+    }
+    .before div:nth-child(1){
+        width: 18rem;
+        height: 18rem;
+        
+    }
+    .before div:nth-child(2){
+        width: 25rem;
+        height: 25rem;
+    }
+    .before div:nth-child(3){
+        width: 35rem;
+        height: 35rem;
+    }
+    
+
+}
+@media screen and (max-width: 768px) {
+    .buttons{
+        width: 7rem;
+        height: 7rem;
+    }
+    .game{
+        flex-basis: unset;
+        margin-top: 15vh;
+    }
+    .youPicked, .theHousePicked {
+        position: relative;
+        height: 50%;
+        width: 200px;
+    }
+    .result{
+        align-items: flex-start;
+        margin-top: 5rem;
+    }
+    .resultShow{
+        position: absolute;
+        bottom: 25%;
+    }
+    #resultStat{
+        white-space: nowrap;
+        font-size: 3.5rem;
+    }
+    .resultShow button{
+        padding: 1rem 3rem;
+        border-radius: 0.75rem;
+    }
+}
+
+@media screen and (max-width:650px) {
+    .result h2 {
+        font-size: 2rem;
+    }
+}
+@media screen and (max-width: 600px) {
+    .game{
+        width: 50vw;
+        height: 50vw;
+    }
+    .gameContainer{
+        width: 100%;
+        height: 100%;
+    }
+    .result .buttons, .result .button{
+        width: 8rem;
+        height: 8rem;
+    }
+    .before div:nth-child(1){
+        width: 15rem;
+        height: 15rem;
+        
+    }
+    .before div:nth-child(2){
+        width: 20rem;
+        height: 20rem;
+    }
+    .before div:nth-child(3){
+        width: 27rem;
+        height: 27rem;
+    }
+    #rulesBtn{
+        transform: translateX(-50%);
+        left: 50%;
+        right: unset;
+    }
+}
+@media screen and (max-width: 500px) {
+    .buttons{
+        width: 6rem;
+        height: 6rem;
+        border-width: 1rem;
+    }
+}
+@media screen and (max-width:425px) {
+    .result .buttons, .result .button{
+        width: 7rem;
+        height: 7rem;
+        border-width: 1rem;
+    }
+    .before div:nth-child(1){
+        width: 10rem;
+        height: 10rem;
+        
+    }
+    .before div:nth-child(2){
+        width: 15rem;
+        height: 15rem;
+    }
+    .before div:nth-child(3){
+        width: 22rem;
+        height: 22rem;
+        
+    }
+    .result{
+        width: 100%;
+    }
+    .result h2 {
+        font-size: 1.7rem;
+    }
+    .buttons img{
+        width: 3rem;
+    }
+    .score{
+        padding: 0 2rem 1rem;
+        
+    }
+    header{
+        height: 8rem;
+    }
+    #score{
+        line-height: 2rem;
+        font-size: 3rem;
+    }
+    .score p{
+        font-size: 1rem;
+    }
+}
